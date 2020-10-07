@@ -4,8 +4,8 @@ body{
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
- flex-direction: column;
- justify-content: center;
+    flex-direction: column;
+    justify-content: center;
    
 }
 
@@ -30,14 +30,14 @@ section{
 
 background: #324252;
 color:white;
-margin: 5px;
-flex-basis: 100px;
-border-radius: 10px;
 text-align: center;
-line-height: 100px;
-border-color: #909090;
+display: flex; 
+justify-content: center; /* For horizontal alignment */
+align-items: center; /* For vertical alignment */
 
 }
+section {flex-grow: 1;}
+
 nav,aside{
 
     background: white;
@@ -49,8 +49,25 @@ nav,aside{
     line-height: 100px;
     border-color: burlywood;
     
-    }
-section {flex-grow: 1;}
+}
+
+
+
+.game-container {
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr ;
+    grid-template-rows: repeat(3, 0.5fr);
+    /* width:60%; */
+    /*show grid grid-column-gap: 4px;
+    grid-row-gap: 4px;*/
+}
+.game-box{/*?? How to NOT streched?*/
+    border: 5px solid #5dc1d8;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 5em;/*em=pixels/16; 1em=current font size. The default text 16px*/
+      
+}
 
 /* add mobile device*/
 @media screen and (max-width:600px){
