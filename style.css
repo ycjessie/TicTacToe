@@ -52,8 +52,8 @@ nav,aside{
 .start-status {
     
     margin-bottom: 10px;
-    display: flex;
-    justify-content: space-around;
+    display: flex;/*whos next/cursor align the same line */
+    justify-content: space-evenly;/*make next/reset has space eventlyr*/
   }
 
 
@@ -66,7 +66,7 @@ nav,aside{
     /*show grid grid-column-gap: 4px;
     grid-row-gap: 4px;*/
 }
-.game-box{/*?? How to NOT streched?*/
+.game-box{
     cursor: pointer;
     border: 2px solid white;
     border-radius: 2px;
@@ -75,11 +75,7 @@ nav,aside{
     display: flex;
     /* background:#5dc1d8; */
     height: 100px;
-    width:100px;
-    
-    
-   
-   
+    width:100px; 
 }
 .next-turn{
     cursor: pointer;
