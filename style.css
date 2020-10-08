@@ -17,6 +17,12 @@ header,footer{
     text-align: center;
     line-height: 30px;
 }
+#save-btn {
+    background: #000;
+    color: #fff;
+    padding: 5px;
+    width: 200px;
+  }
 /*Main is a flex item and Flex container*/
 main{ 
     background: white;
@@ -24,8 +30,6 @@ main{
     justify-content: space-around;
     flex-grow: 1;
 }
-
-
 section{
 
 background: #324252;
@@ -36,7 +40,7 @@ justify-content: center; /* For horizontal alignment */
 align-items: center; /* For vertical alignment */
 
 }
-section {flex-grow: 1;}
+section {flex-grow: 2;}
 
 nav,aside{
 
@@ -57,16 +61,24 @@ nav,aside{
     display: grid;
     grid-template-columns: 0.5fr 0.5fr 0.5fr ;
     grid-template-rows: repeat(3, 0.5fr);
+    
     /* width:60%; */
     /*show grid grid-column-gap: 4px;
     grid-row-gap: 4px;*/
 }
 .game-box{/*?? How to NOT streched?*/
-    border: 5px solid #5dc1d8;
+    border: 2px solid white;
     border-radius: 2px;
     font-weight: bold;
     font-size: 5em;/*em=pixels/16; 1em=current font size. The default text 16px*/
-      
+    display: flex;
+    /* background:#5dc1d8; */
+    height: 100px;
+    width:100px;
+    cursor: pointer;
+    
+   
+   
 }
 
 /* add mobile device*/
