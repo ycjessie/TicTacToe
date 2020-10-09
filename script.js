@@ -35,10 +35,11 @@ const Gamestatus= function(){
     const gamebox9=Gameboxdiv[8].classList[2];
 // console.log(gamebox1,gamebox2,gamebox3,gamebox4,gamebox5,gamebox6,gamebox7,gamebox8,gamebox9)
     if(gamebox1 && gamebox1===gamebox2 && gamebox2===gamebox3){
+        console.log(gamebox1);
         Activegame=false;
         gameWinner=gamebox1;
-        console.log(gamebox1,gamebox2,gamebox3,gameWinner)
         gameStartdiv.innerHTML = `${gameWinner} wins`;
+       
     }
 }
 //*************check winner ********/
@@ -64,8 +65,8 @@ GameContainerdiv.addEventListener('click',(event)=>{
             startPlayer="O"; //change Player
             //console.log("first")
             console.log(event.target.classList);//show mouse click on a specific box
-            Gamestatus()
             gameStartdiv.innerHTML = PlayerTurn();
+            Gamestatus()
         }
         else{
             startPlayer="X"
@@ -73,8 +74,8 @@ GameContainerdiv.addEventListener('click',(event)=>{
             //console.log("next")
             console.log(event.target.classList);
             event.target.classList.add(startPlayer);
-            Gamestatus();
             gameStartdiv.innerHTML = PlayerTurn();
+            Gamestatus();
         }    
         //console.log(event)//mouse click event
         //console.log(event.target.classList);//show mouse click on a specific box
