@@ -5,17 +5,44 @@ const GameContainerdiv=document.querySelector(".game-container");//buttonContain
 const Nextdiv=document.querySelector('.next-turn');
 const gameStartdiv=document.querySelector('.game-status');
 const Resetdiv=document.querySelector('.reset');
+
+//game variables
 let Activegame = true;
 let startPlayer = "X";
+let gameWinner='';
 const PlayerTurn= function(){
-   
     return `Player ${startPlayer} turn`;
 }
 const winMsg= function(){
-    return `Player ${startPlayer} wins!`;
+    Activegame=false;
+    gameWinner=gamebox1;
+    gameStartdiv.innerHTML = `${startPlayer} wins`;
+    //return `Player ${startPlayer} wins!`;
 }
 let gameStart = ["", "", "", "", "", "", "", "", ""];
-//gameStartdiv.innerHTML = PlayerTurn();
+
+
+//***********check game status*******************/
+const Gamestatus= function(){
+    const gamebox1=Gameboxdiv[0].classList[2];
+    const gamebox2=Gameboxdiv[1].classList[2];
+    const gamebox3=Gameboxdiv[2].classList[2];
+    const gamebox4=Gameboxdiv[3].classList[2];
+    const gamebox5=Gameboxdiv[4].classList[2];
+    const gamebox6=Gameboxdiv[5].classList[2];
+    const gamebox7=Gameboxdiv[6].classList[2];
+    const gamebox8=Gameboxdiv[7].classList[2];
+    const gamebox9=Gameboxdiv[8].classList[2];
+// console.log(gamebox1,gamebox2,gamebox3,gamebox4,gamebox5,gamebox6,gamebox7,gamebox8,gamebox9)
+    if(gamebox1 && gamebox1===gamebox2 && gamebox2===gamebox3){
+        Activegame=false;
+        gameWinner=gamebox1;
+        console.log(gamebox1,gamebox2,gamebox3,gameWinner)
+        gameStartdiv.innerHTML = `${gameWinner} wins`;
+    }
+}
+//*************check winner ********/
+
 
 //***********Click box  *******************/
 GameContainerdiv.addEventListener('click',(event)=>{
@@ -37,6 +64,7 @@ GameContainerdiv.addEventListener('click',(event)=>{
             startPlayer="O"; //change Player
             //console.log("first")
             console.log(event.target.classList);//show mouse click on a specific box
+            Gamestatus()
             gameStartdiv.innerHTML = PlayerTurn();
         }
         else{
@@ -44,7 +72,8 @@ GameContainerdiv.addEventListener('click',(event)=>{
             startPlayer!=startPlayer
             //console.log("next")
             console.log(event.target.classList);
-            event.target.classList.add(startPlayer)
+            event.target.classList.add(startPlayer);
+            Gamestatus();
             gameStartdiv.innerHTML = PlayerTurn();
         }    
         //console.log(event)//mouse click event
@@ -54,18 +83,16 @@ GameContainerdiv.addEventListener('click',(event)=>{
 //*********************RESET GAME *******************/
 Resetdiv.addEventListener('click',(event)=>{
      event.preventDefault();
-    
-     console.log(event.target.classList[0]);
-    Activegame = false;
+     //console.log(event)
+    //console.log(event.target.classList[0]);
     startPlayer="X";
-    gameStart = ["", "", "", "", "", "", "", "", ""];
     gameStartdiv.innerHTML = `${startPlayer} is next`;
-    
     document.querySelectorAll(".game-box").forEach((element)=>{
         element.innerHTML = "";
         element.classList.remove("X");
         element.classList.remove("O");
-       
+        
+        //console.log(element.classList[2])
       
     });        
    
