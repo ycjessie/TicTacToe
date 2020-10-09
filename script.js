@@ -1,13 +1,14 @@
 console.log('it works!')
 const Gameboxdiv=document.querySelectorAll(".game-box");//allButtons
-    //console.log(Gameboxdiv);
+    console.log(Gameboxdiv);
 const GameContainerdiv=document.querySelector(".game-container");//buttonContainer
 const Nextdiv=document.querySelector('.next-turn');
 const gameStartdiv=document.querySelector('.game-status');
 const Resetdiv=document.querySelector('.reset');
 let Activegame = true;
-let startPlayer = "O";
+let startPlayer = "X";
 const PlayerTurn= function(){
+   
     return `Player ${startPlayer} turn`;
 }
 const winMsg= function(){
@@ -21,33 +22,47 @@ GameContainerdiv.addEventListener('click',(event)=>{
     //console.log('game container: clicked');
     //console.log(event);//mouse click event works also show target.classList
     //event.target.innerText=startPlayer//'HELLO' replace with startPlayer
+    
     let boxClick=event.target.classList[2];
     let boxLocation=event.target.classList[1];
+    //console.log(`box ${boxLocation} click`);
     if(boxClick==="X"|| boxClick==="O"){
-        return;
+        return;//No click twice
     }
     if(event.target.innerText==='')
         event.target.innerText=startPlayer;
         event.target.classList.add(startPlayer)
        
-        if(startPlayer==="O"){
-            startPlayer="X"; 
-            console.log("first")
+        if(startPlayer==="X"){
+            startPlayer="O"; //change Player
+            //console.log("first")
             console.log(event.target.classList);//show mouse click on a specific box
             gameStartdiv.innerHTML = PlayerTurn();
         }
         else{
-            startPlayer="O"
+            startPlayer="X"
             startPlayer!=startPlayer
-            console.log("next")
+            //console.log("next")
             console.log(event.target.classList);
             event.target.classList.add(startPlayer)
             gameStartdiv.innerHTML = PlayerTurn();
         }    
         //console.log(event)//mouse click event
         //console.log(event.target.classList);//show mouse click on a specific box
-        console.log(`box ${cellLocation} click`);
+        
+})  
+//*********************RESET GAME *******************/
+Resetdiv.addEventListener('click',(event)=>{
+     event.preventDefault();
+    Activegame = true;
+    startPlayer="X";
+    gameStart = ["", "", "", "", "", "", "", "", ""];
     
+    document.querySelectorAll(".game-box").forEach((element)=>{
+        element.innerHTML = ""
+    });
+   
+ })
   
 
 
@@ -63,21 +78,8 @@ GameContainerdiv.addEventListener('click',(event)=>{
     //         }
     //     })
     //  }
-})
-//*********************RESET GAME *******************/
-Resetdiv.addEventListener('click',(event)=>{
-    event.preventDefault();
-    console.log('Reset...');
-    Activegame = true;
-    currentPlayer = "O";
-    gameStart = ["", "", "", "", "", "", "", "", ""];
-    // Nextdiv.innerHTML = currentPlayerTurn();
-    gameStartdiv.innerHTML = PlayerTurn();
-    document.querySelectorAll(".game-box").forEach((element)=>{
-        element.innerHTML = ""
-    });
-   
- })
+
+
 
 
 //=================================

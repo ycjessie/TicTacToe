@@ -80,9 +80,11 @@ nav,aside{
 }
 .next-turn{
     cursor: pointer;
+
 }
 .reset{
     cursor:pointer;
+    margin-top: 10px;
 }
 .reset:hover{
     color:#ef8318
