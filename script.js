@@ -54,13 +54,20 @@ GameContainerdiv.addEventListener('click',(event)=>{
 //*********************RESET GAME *******************/
 Resetdiv.addEventListener('click',(event)=>{
      event.preventDefault();
-    Activegame = true;
+    
+     console.log(event.target.classList[0]);
+    Activegame = false;
     startPlayer="X";
     gameStart = ["", "", "", "", "", "", "", "", ""];
+    gameStartdiv.innerHTML = `${startPlayer} is next`;
     
     document.querySelectorAll(".game-box").forEach((element)=>{
-        element.innerHTML = ""
-    });
+        element.innerHTML = "";
+        element.classList.remove("X");
+        element.classList.remove("O");
+       
+      
+    });        
    
  })
   
