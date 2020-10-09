@@ -10,6 +10,7 @@ const Resetdiv = document.querySelector(".reset");
 let Activegame = true;
 let startPlayer = "X";
 let gameWinner = null;
+gameStartdiv.innerHTML = "Let's Play";
 const PlayerTurn = function () {
   return `Player ${startPlayer} turn`;
 };
@@ -71,7 +72,7 @@ const Gamestatus = function () {
     gamebox9
   ) {
     Activegame = false;
-    gameStartdiv.innerHTML = "tie No winners!!";
+    gameStartdiv.innerHTML = "TIE. No Winner!!";
   }
 };
 
@@ -81,6 +82,7 @@ GameContainerdiv.addEventListener("click", (event) => {
   //console.log(event);//mouse click event works also show target.classList
   //event.target.innerText=startPlayer//'HELLO' replace with startPlayer
   if (Activegame === true) {
+    
     let boxClick = event.target.classList[2];
     let boxLocation = event.target.classList[1];
     //console.log(`box ${boxLocation} click`);
@@ -118,7 +120,7 @@ Resetdiv.addEventListener("click", (event) => {
   //console.log(event.target.classList[0]);
   startPlayer = "X";
   Activegame = true;
-  gameStartdiv.innerHTML = `${startPlayer} is next`;
+  gameStartdiv.innerHTML = `Let's Play! ${startPlayer} is next`;
   document.querySelectorAll(".game-box").forEach((element) => {
     element.innerHTML = "";
     element.classList.remove("X");
