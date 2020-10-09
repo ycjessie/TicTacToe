@@ -9,14 +9,16 @@ const Resetdiv=document.querySelector('.reset');
 //game variables
 let Activegame = true;
 let startPlayer = "X";
-let gameWinner='';
+let gameWinner=null;
 const PlayerTurn= function(){
     return `Player ${startPlayer} turn`;
 }
-const winMsg= function(){
+const winMsg= function(element){
     Activegame=false;
-    gameWinner=gamebox1;
-    gameStartdiv.innerHTML = `${startPlayer} wins`;
+    //console.log(element)
+    gameWinner=element;
+    gameStartdiv.innerHTML = `${gameWinner} wins`;
+    
     //return `Player ${startPlayer} wins!`;
 }
 let gameStart = ["", "", "", "", "", "", "", "", ""];
@@ -34,15 +36,46 @@ const Gamestatus= function(){
     const gamebox8=Gameboxdiv[7].classList[2];
     const gamebox9=Gameboxdiv[8].classList[2];
 // console.log(gamebox1,gamebox2,gamebox3,gamebox4,gamebox5,gamebox6,gamebox7,gamebox8,gamebox9)
+//*************check winner ***************/
+
     if(gamebox1 && gamebox1===gamebox2 && gamebox2===gamebox3){
-        console.log(gamebox1);
-        Activegame=false;
-        gameWinner=gamebox1;
-        gameStartdiv.innerHTML = `${gameWinner} wins`;
-       
+        // console.log(gamebox1);
+        // Activegame=false;
+        // gameWinner=gamebox1;
+        // gameStartdiv.innerHTML = `${gameWinner} wins`;
+        winMsg(gamebox1);
     }
+    else if(gamebox1 && gamebox1===gamebox4 && gamebox4===gamebox7){
+        winMsg(gamebox1);
+    }
+    else if(gamebox4 && gamebox4===gamebox5 && gamebox5===gamebox6){
+        winMsg(gamebox4);
+    }
+    else if(gamebox7 && gamebox7===gamebox8 && gamebox8===gamebox9){
+        winMsg(gamebox7);
+    }
+    else if(gamebox1 && gamebox1===gamebox4 && gamebox4===gamebox7){
+        winMsg(gamebox7);
+    }
+    else if(gamebox2 && gamebox2===gamebox5 && gamebox5===gamebox8){
+        winMsg(gamebox2);
+    }
+    else if(gamebox3 && gamebox3===gamebox6 && gamebox6===gamebox9){
+        winMsg(gamebox3);
+    }
+    else if(gamebox1 && gamebox1===gamebox5 && gamebox5===gamebox9){
+        winMsg(gamebox1);
+    }
+    else if(gamebox3 && gamebox3===gamebox5 && gamebox5===gamebox7){
+        winMsg(gamebox3);
+    }
+    else if(gamebox1 && gamebox2 && gamebox3 && gamebox4 && gamebox5 &&gamebox6 && gamebox7 && gamebox8 && gamebox9){
+        Activegame=false;
+        gameStartdiv.innerHTML = 'tie No winners!!';
+    }
+
+    
 }
-//*************check winner ********/
 
 
 //***********Click box  *******************/
@@ -50,7 +83,7 @@ GameContainerdiv.addEventListener('click',(event)=>{
     //console.log('game container: clicked');
     //console.log(event);//mouse click event works also show target.classList
     //event.target.innerText=startPlayer//'HELLO' replace with startPlayer
-    
+if (Activegame===true){
     let boxClick=event.target.classList[2];
     let boxLocation=event.target.classList[1];
     //console.log(`box ${boxLocation} click`);
@@ -79,14 +112,17 @@ GameContainerdiv.addEventListener('click',(event)=>{
         }    
         //console.log(event)//mouse click event
         //console.log(event.target.classList);//show mouse click on a specific box
-        
-})  
+    }
+           
+}) 
+ 
 //*********************RESET GAME *******************/
 Resetdiv.addEventListener('click',(event)=>{
      event.preventDefault();
      //console.log(event)
     //console.log(event.target.classList[0]);
     startPlayer="X";
+    Activegame=true;
     gameStartdiv.innerHTML = `${startPlayer} is next`;
     document.querySelectorAll(".game-box").forEach((element)=>{
         element.innerHTML = "";
