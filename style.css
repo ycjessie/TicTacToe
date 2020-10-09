@@ -73,6 +73,7 @@ nav,aside{
     font-weight: bold;
     font-size: 5em;/*em=pixels/16; 1em=current font size. The default text 16px*/
     display: flex;
+    justify-content: center;/*center X or O*/
     /* background:#5dc1d8; */
     height: 100px;
     width:100px; 
