@@ -4,27 +4,39 @@ console.log(Gameboxdiv);
 const GameContainerdiv = document.querySelector(".game-container"); //buttonContainer
 const Nextdiv = document.querySelector(".next-turn");
 const gameStartdiv = document.querySelector(".game-status");
+const player1div = document.querySelector("#player1");
+const player2div = document.querySelector("#player2");
 const Resetdiv = document.querySelector(".reset");
 
 //game variables
 let Activegame = true;
+let currentPlayer = 0;
+let points1 = 0;
+let points2 = 0;
 let startPlayer = "X";
 let gameWinner = null;
 gameStartdiv.innerHTML = "Let's Play";
+
 const PlayerTurn = function () {
-  return `Player ${startPlayer} turn`;
+  return `Player ${startPlayer} turn`;//UserStories: Show turns
 };
 const winMsg = function (element) {
   Activegame = false;
   //console.log(element)
   gameWinner = element;
-  gameStartdiv.innerHTML = `${gameWinner} wins`;
-
+  gameStartdiv.innerHTML = `${gameWinner} wins`;//UserStories: Show winner
   //return `Player ${startPlayer} wins!`;
 };
-let gameStart = ["", "", "", "", "", "", "", "", ""];
+const checkWinner = function () {
+  Activegame = false;
+  if (currentPlayer == 0) points1++;
+  else points2++;
 
-//***********check game status*******************/
+  document.getElementById("player1").innerHTML = points1;
+  document.getElementById("player2").innerHTML = points2;
+};
+
+//***********UserStories:  check game status*******************/
 const Gamestatus = function () {
   const gamebox1 = Gameboxdiv[0].classList[2];
   const gamebox2 = Gameboxdiv[1].classList[2];
@@ -36,7 +48,8 @@ const Gamestatus = function () {
   const gamebox8 = Gameboxdiv[7].classList[2];
   const gamebox9 = Gameboxdiv[8].classList[2];
   // console.log(gamebox1,gamebox2,gamebox3,gamebox4,gamebox5,gamebox6,gamebox7,gamebox8,gamebox9)
-  //*************check winner ***************/
+  
+  //*************UserStories:check winner ***************/
 
   if (gamebox1 && gamebox1 === gamebox2 && gamebox2 === gamebox3) {
     // console.log(gamebox1);
@@ -44,22 +57,31 @@ const Gamestatus = function () {
     // gameWinner=gamebox1;
     // gameStartdiv.innerHTML = `${gameWinner} wins`;
     winMsg(gamebox1);
+    checkWinner(gamebox1);
   } else if (gamebox1 && gamebox1 === gamebox4 && gamebox4 === gamebox7) {
     winMsg(gamebox1);
+    checkWinner(gamebox1);
   } else if (gamebox4 && gamebox4 === gamebox5 && gamebox5 === gamebox6) {
     winMsg(gamebox4);
+    checkWinner(gamebox4);
   } else if (gamebox7 && gamebox7 === gamebox8 && gamebox8 === gamebox9) {
     winMsg(gamebox7);
+    checkWinner(gamebox7);
   } else if (gamebox1 && gamebox1 === gamebox4 && gamebox4 === gamebox7) {
     winMsg(gamebox7);
+    checkWinner(gamebox7);
   } else if (gamebox2 && gamebox2 === gamebox5 && gamebox5 === gamebox8) {
     winMsg(gamebox2);
+    checkWinner(gamebox2);
   } else if (gamebox3 && gamebox3 === gamebox6 && gamebox6 === gamebox9) {
     winMsg(gamebox3);
+    checkWinner(gamebox3);
   } else if (gamebox1 && gamebox1 === gamebox5 && gamebox5 === gamebox9) {
     winMsg(gamebox1);
+    checkWinner(gamebox1);
   } else if (gamebox3 && gamebox3 === gamebox5 && gamebox5 === gamebox7) {
     winMsg(gamebox3);
+    checkWinner(gamebox3);
   } else if (
     gamebox1 &&
     gamebox2 &&
@@ -76,36 +98,46 @@ const Gamestatus = function () {
   }
 };
 
-//***********Click box  *******************/
+//***********UserStories: Click box  *******************/
 GameContainerdiv.addEventListener("click", (event) => {
   //console.log('game container: clicked');
   //console.log(event);//mouse click event works also show target.classList
   //event.target.innerText=startPlayer//'HELLO' replace with startPlayer
   if (Activegame === true) {
-    
+    //disable the click when wins
+
     let boxClick = event.target.classList[2];
     let boxLocation = event.target.classList[1];
     //console.log(`box ${boxLocation} click`);
     if (boxClick === "X" || boxClick === "O") {
-      return; //No click twice
+      return; //UserStories: No click twice
     }
-    if (event.target.innerText === "") event.target.innerText = startPlayer;
+    if (event.target.innerText === "") event.target.innerText = startPlayer; //Assign X startPlayer
     event.target.classList.add(startPlayer);
+
+    console.log(event.target.classList);
+    //console.log(document.getElementById('player1').classList)
 
     if (startPlayer === "X") {
       startPlayer = "O"; //change Player
+
       //console.log("first")
       // console.log(event.target);
-      console.log(event.target.classList); //show mouse click on a specific box
+      //console.log(event.target.classList); //show mouse click on a specific box
       gameStartdiv.innerHTML = PlayerTurn();
+      event.target.classList.add("selected");
+      event.target.classList.remove("selected");
+      //console.log(document.getElementById('player1').classList)
       Gamestatus();
     } else {
       startPlayer = "X";
-      startPlayer != startPlayer;
+      //player1div.innerText=startPlayer;
       //console.log("next")
-      console.log(event.target.classList);
+      //console.log(event.target.classList)
       event.target.classList.add(startPlayer);
       gameStartdiv.innerHTML = PlayerTurn();
+      event.target.classList.add("selected");
+      event.target.classList.remove("selected");
       Gamestatus();
     }
     //console.log(event)//mouse click event
@@ -116,6 +148,7 @@ GameContainerdiv.addEventListener("click", (event) => {
 //*********************RESET GAME *******************/
 Resetdiv.addEventListener("click", (event) => {
   event.preventDefault();
+
   //console.log(event)
   //console.log(event.target.classList[0]);
   startPlayer = "X";
