@@ -32,14 +32,16 @@ const winMsg = function (element) {
 const checkWinner = function (element) {//UserStories: count winner
   Activegame = false;
   console.log( `${gameWinner}`)
-  if (currentPlayer == 0) {
+  if (currentPlayer == 0 && gameWinner==="X") {
     points1++;
+    document.getElementById("player1").innerHTML = points1;
   } else {
     points2++;
+    document.getElementById("player2").innerHTML = points2;
   }
   
-  document.getElementById("player1").innerHTML = `${gameWinner} wins `+ points1;
-  document.getElementById("player2").innerHTML = points2;
+  // document.getElementById("player1").innerHTML = `${gameWinner} wins `+ points1;
+  // document.getElementById("player2").innerHTML = `${gameWinner} wins `+ points2;
 };
 
 //***********UserStories:  check game status*******************/

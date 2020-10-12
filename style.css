@@ -50,7 +50,7 @@ nav,aside{
     
 }
 .game-status {
-    
+    font-size: 13pt;
     margin-bottom: 15px;
     display: flex;/*whos next/cursor align the same line */
     justify-content: space-evenly;/*make next/reset has space eventlyr*/
