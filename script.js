@@ -103,16 +103,16 @@ GameContainerdiv.addEventListener("click", (event) => {
   //console.log('game container: clicked');
   //console.log(event);//mouse click event works also show target.classList
   //event.target.innerText=startPlayer//'HELLO' replace with startPlayer
-  if (Activegame === true) {
-    //disable the click when wins
-
+  if (Activegame === true) {//UserStories: stop the game when there is a win
+  
     let boxClick = event.target.classList[2];
     let boxLocation = event.target.classList[1];
     //console.log(`box ${boxLocation} click`);
-    if (boxClick === "X" || boxClick === "O") {
-      return; //UserStories: No click twice
+    if (boxClick === "X" || boxClick === "O") {//UserStories: No click same box twice
+      return; //UserStories: No click same boxtwice
     }
-    if (event.target.innerText === "") event.target.innerText = startPlayer; //Assign X startPlayer
+    if (event.target.innerText === "") 
+    event.target.innerText = startPlayer; ////UserStories: No click twiceAssign X thestartPlayer
     event.target.classList.add(startPlayer);
 
     console.log(event.target.classList);
