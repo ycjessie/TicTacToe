@@ -5,19 +5,20 @@ const GameContainerdiv = document.querySelector(".game-container"); //buttonCont
 const Nextdiv = document.querySelector(".next-turn");
 const gameStartdiv = document.querySelector(".game-status");
 
-const player1div = document.querySelector(".player > #player1");
-//console.log(player1div.innerText);
-const player2div = document.querySelector("#player2");
+// const player1div = document.querySelector(".player > #player1");
+// //console.log(player1div.innerText);
+// const player2div = document.querySelector("#player2");
 const Resetdiv = document.querySelector(".reset");
 
 //game variables
 let Activegame = true;
-let currentPlayer = 0;
-let points1 = 0;
-let points2 = 0;
 let startPlayer = "X";
 let gameWinner = null;
 gameStartdiv.innerHTML = "Let's Play";
+//Potential Extra variables
+let currentPlayer = 0;
+let points1 = 0;
+let points2 = 0;
 
 const PlayerTurn = function () {
   return `Player ${startPlayer} turn`; //UserStories: Show turns
@@ -29,7 +30,7 @@ const winMsg = function (element) {
   gameStartdiv.innerHTML = `${gameWinner} wins`; //UserStories: Show winner
   //return `Player ${startPlayer} wins!`;
 };
-const checkWinner = function (element) {//UserStories: count winner
+const checkWinner = function (element) {//Potential Extra: count winner
   Activegame = false;
   console.log( `${gameWinner}`)
   if (currentPlayer == 0 && gameWinner==="X") {
@@ -40,8 +41,6 @@ const checkWinner = function (element) {//UserStories: count winner
     document.getElementById("player2").innerHTML = points2;
   }
   
-  // document.getElementById("player1").innerHTML = `${gameWinner} wins `+ points1;
-  // document.getElementById("player2").innerHTML = `${gameWinner} wins `+ points2;
 };
 
 //***********UserStories:  check game status*******************/
@@ -65,7 +64,7 @@ const Gamestatus = function () {
     // gameWinner=gamebox1;
     // gameStartdiv.innerHTML = `${gameWinner} wins`;
     winMsg(gamebox1);
-    checkWinner(gamebox1);
+    checkWinner(gamebox1);//*************Potential Extra***************/
   } else if (gamebox1 && gamebox1 === gamebox4 && gamebox4 === gamebox7) {
     winMsg(gamebox1);
     checkWinner(gamebox1);
