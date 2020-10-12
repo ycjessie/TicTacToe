@@ -1,10 +1,12 @@
 console.log("it works!");
 const Gameboxdiv = document.querySelectorAll(".game-box"); //allButtons
-console.log(Gameboxdiv);
+//console.log(Gameboxdiv);
 const GameContainerdiv = document.querySelector(".game-container"); //buttonContainer
 const Nextdiv = document.querySelector(".next-turn");
 const gameStartdiv = document.querySelector(".game-status");
-const player1div = document.querySelector("#player1");
+
+const player1div = document.querySelector(".player > #player1");
+//console.log(player1div.innerText);
 const player2div = document.querySelector("#player2");
 const Resetdiv = document.querySelector(".reset");
 
@@ -18,21 +20,25 @@ let gameWinner = null;
 gameStartdiv.innerHTML = "Let's Play";
 
 const PlayerTurn = function () {
-  return `Player ${startPlayer} turn`;//UserStories: Show turns
+  return `Player ${startPlayer} turn`; //UserStories: Show turns
 };
 const winMsg = function (element) {
   Activegame = false;
   //console.log(element)
   gameWinner = element;
-  gameStartdiv.innerHTML = `${gameWinner} wins`;//UserStories: Show winner
+  gameStartdiv.innerHTML = `${gameWinner} wins`; //UserStories: Show winner
   //return `Player ${startPlayer} wins!`;
 };
-const checkWinner = function () {
+const checkWinner = function (element) {//UserStories: count winner
   Activegame = false;
-  if (currentPlayer == 0) points1++;
-  else points2++;
-
-  document.getElementById("player1").innerHTML = points1;
+  console.log( `${gameWinner}`)
+  if (currentPlayer == 0) {
+    points1++;
+  } else {
+    points2++;
+  }
+  
+  document.getElementById("player1").innerHTML = `${gameWinner} wins `+ points1;
   document.getElementById("player2").innerHTML = points2;
 };
 
@@ -48,7 +54,7 @@ const Gamestatus = function () {
   const gamebox8 = Gameboxdiv[7].classList[2];
   const gamebox9 = Gameboxdiv[8].classList[2];
   // console.log(gamebox1,gamebox2,gamebox3,gamebox4,gamebox5,gamebox6,gamebox7,gamebox8,gamebox9)
-  
+
   //*************UserStories:check winner ***************/
 
   if (gamebox1 && gamebox1 === gamebox2 && gamebox2 === gamebox3) {
@@ -103,32 +109,30 @@ GameContainerdiv.addEventListener("click", (event) => {
   //console.log('game container: clicked');
   //console.log(event);//mouse click event works also show target.classList
   //event.target.innerText=startPlayer//'HELLO' replace with startPlayer
-  if (Activegame === true) {//UserStories: stop the game when there is a win
-  
+  if (Activegame === true) {
+    //UserStories: stop the game when there is a win
+
     let boxClick = event.target.classList[2];
     let boxLocation = event.target.classList[1];
     //console.log(`box ${boxLocation} click`);
-    if (boxClick === "X" || boxClick === "O") {//UserStories: No click same box twice
+    if (boxClick === "X" || boxClick === "O") {
       return; //UserStories: No click same boxtwice
     }
-    if (event.target.innerText === "") 
-    event.target.innerText = startPlayer; ////UserStories: No click twiceAssign X thestartPlayer
-    event.target.classList.add(startPlayer);
-
-    console.log(event.target.classList);
-    //console.log(document.getElementById('player1').classList)
-
+    if (event.target.innerText === "") {
+      event.target.innerText = startPlayer; //UserStories: Assign X the 1startPlayer
+      event.target.classList.add(startPlayer);
+    }
+    //console.log(event.target.classList);
+  
     if (startPlayer === "X") {
       startPlayer = "O"; //change Player
+      gameStartdiv.innerHTML = PlayerTurn();
+      
+      Gamestatus();
 
       //console.log("first")
       // console.log(event.target);
       //console.log(event.target.classList); //show mouse click on a specific box
-      gameStartdiv.innerHTML = PlayerTurn();
-      event.target.classList.add("selected");
-      event.target.classList.remove("selected");
-      //console.log(document.getElementById('player1').classList)
-      Gamestatus();
     } else {
       startPlayer = "X";
       //player1div.innerText=startPlayer;
@@ -136,8 +140,6 @@ GameContainerdiv.addEventListener("click", (event) => {
       //console.log(event.target.classList)
       event.target.classList.add(startPlayer);
       gameStartdiv.innerHTML = PlayerTurn();
-      event.target.classList.add("selected");
-      event.target.classList.remove("selected");
       Gamestatus();
     }
     //console.log(event)//mouse click event
