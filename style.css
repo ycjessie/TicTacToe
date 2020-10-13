@@ -54,7 +54,7 @@ nav,aside{
     margin-top:5px ;
     margin-bottom: 15px;
     display: flex;/*whos next/cursor align the same line */
-    justify-content: space-evenly;/*make next/reset has space eventlyr*/
+    justify-content: space-around;/*make next/reset has space eventlyr*/
   }
 
 
@@ -82,7 +82,7 @@ nav,aside{
 .player{
     font-size: 14pt;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin-top:5px ;
     margin-bottom:5px ;  
 }

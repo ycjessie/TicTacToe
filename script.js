@@ -98,8 +98,10 @@ const Gamestatus = function () {
     gamebox9
   ) {
     Activegame = false;
-    gameStartdiv.innerHTML = "TIE. No Winner!! Play Again? ";
-    
+    let ties=0;
+    ties++;
+    gameStartdiv.innerHTML = "No Winner!! Play Again? ";
+    document.getElementById("tie").innerHTML = ties;
   }
 };
 
