@@ -4,10 +4,6 @@ const Gameboxdiv = document.querySelectorAll(".game-box"); //allButtons
 const GameContainerdiv = document.querySelector(".game-container"); //buttonContainer
 const Nextdiv = document.querySelector(".next-turn");
 const gameStartdiv = document.querySelector(".game-status");
-
-// const player1div = document.querySelector(".player > #player1");
-// //console.log(player1div.innerText);
-// const player2div = document.querySelector("#player2");
 const Resetdiv = document.querySelector(".reset");
 
 //game variables
@@ -19,6 +15,7 @@ gameStartdiv.innerHTML = "Let's Play";
 let currentPlayer = 0;
 let points1 = 0;
 let points2 = 0;
+
 
 const PlayerTurn = function () {
   return `Player ${startPlayer} turn`; //UserStories: Show turns
@@ -102,6 +99,7 @@ const Gamestatus = function () {
   ) {
     Activegame = false;
     gameStartdiv.innerHTML = "TIE. No Winner!!";
+    
   }
 };
 
