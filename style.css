@@ -51,7 +51,7 @@ nav,aside{
 }
 .game-status {
     font-size: 13pt;
-    margin-top:15px ;
+    margin-top:5px ;
     margin-bottom: 15px;
     display: flex;/*whos next/cursor align the same line */
     justify-content: space-evenly;/*make next/reset has space eventlyr*/
@@ -84,9 +84,7 @@ nav,aside{
     display: flex;
     justify-content: space-evenly;
     margin-top:5px ;
-    margin-bottom:5px ;
-   
-    
+    margin-bottom:5px ;  
 }
 .next-turn{
     cursor: pointer;

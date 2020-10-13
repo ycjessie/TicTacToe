@@ -24,7 +24,7 @@ const winMsg = function (element) {
   Activegame = false;
   //console.log(element)
   gameWinner = element;
-  gameStartdiv.innerHTML = `${gameWinner} wins`; //UserStories: Show winner
+  gameStartdiv.innerHTML = `${gameWinner} wins!  Play Again? `; //UserStories: Show winner
   //return `Player ${startPlayer} wins!`;
 };
 const checkWinner = function (element) {//Potential Extra: count winner
@@ -98,7 +98,7 @@ const Gamestatus = function () {
     gamebox9
   ) {
     Activegame = false;
-    gameStartdiv.innerHTML = "TIE. No Winner!!";
+    gameStartdiv.innerHTML = "TIE. No Winner!! Play Again? ";
     
   }
 };
