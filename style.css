@@ -50,7 +50,7 @@ nav,aside{
     
 }
 .game-status {
-    font-size: 13pt;
+    font-size: 18pt;
     margin-top:5px ;
     margin-bottom: 15px;
     display: flex;/*whos next/cursor align the same line */
@@ -80,7 +80,7 @@ nav,aside{
     width:100px; 
 }
 .player{
-    font-size: 13pt;
+    font-size: 14pt;
     display: flex;
     justify-content: space-evenly;
     margin-top:5px ;
