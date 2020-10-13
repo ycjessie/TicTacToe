@@ -177,7 +177,7 @@ Resetdiv.addEventListener("click", (event) => {
 //Active game //
 //Default player O:
 
-//set
+
 //************************//
 //reset game
 //************************//

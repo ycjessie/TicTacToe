@@ -38,7 +38,7 @@ Javascript
 ## Features
 
 - User Friendly
-- Can be played across portable electroic device
+- Can be played across portable electroic devices
 
 
 ## User Stories
