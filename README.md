@@ -55,7 +55,6 @@ Javascript
 ## What's left?
 
 <ul>
-<li>Include a Tie Counter</li>
 <li>Allow players to pick  their tokens (X, O, name, picture, etc)</li>
 <li>Include Audio in the game</li>
 </ul>
