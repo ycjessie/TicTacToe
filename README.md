@@ -1,6 +1,6 @@
 # TIC TAC TOE
 
-Xs and Os, is a game for two players, who take turns marking the spaces in a 3×3 grid. The winner of the player is the one who succeeds in placing three of the marks in a horizontal, vertical, or diagonal row.
+Xs and Os, is a game for two players, who take turns marking the spaces in a 3×3 grid. The winner of the player is the one who places three of the marks successfully in a vertical, horizontal, or diagonal row.
 
 ## Installation
 
