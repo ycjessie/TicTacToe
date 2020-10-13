@@ -13,9 +13,9 @@ No installation
 ## Preview
 
 <p float="left">
-  <img src="./image/game start.png" alt="game start" width="150" height="300">
-  <img src="./image/game winner view.png" alt="game winner" width="150" height="300">
-  <img src="./image/game ties.png" alt="games ties " width="150" height="300">
+  <img src="./image/game start.png" alt="game start" width="150" height="250">
+  <img src="./image/game winner view.png" alt="game winner" width="150" height="250">
+  <img src="./image/game ties.png" alt="games ties " width="150" height="250">
 </p>
 
 ## Technologies used
