@@ -37,8 +37,9 @@ Javascript
 
 ## Features
 
-- Mobile and Kids Friendly
-- Show Winner Count
+- User Friendly
+- Can be played across portable electroic device
+
 
 ## User Stories
 <ul>
